@@ -2,7 +2,7 @@
 
 ---
 - [Summary](#summary)
-- [Plugin Features](#Plugin Features)
+- [Features](#Plugin Features)
 - [Install](#Install)
 - [Setup](#setup)
 
@@ -38,7 +38,8 @@ With Remita OpenCart Payment Plugin, the store admin can easily add all desired 
 ### Setup
 
 1. Login to your OpenCart Admin(On your browser). Click on "Extensions > Payments" from the left hand menu
+
 2. Scroll to "Remita" and click Edit(button beside installation button)
 3. Enter the public key and secrete key (these can be found in the Remita Gateway Admin Panel --> https://login.remita.net/remita/registration/signup.spa
 4. Save the settings
-5. A success message is displayed on the screen, to show your plugin has been installed and the setup was successful.
+5. A success message is displayed on the screen to show your plugin has been installed and the setup was successful.
