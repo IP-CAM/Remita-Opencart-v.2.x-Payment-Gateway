@@ -20,7 +20,7 @@ With Remita OpenCart Payment Plugin, the store admin can easily add all desired 
 *   __Accept payment__ via Visa Cards, Mastercards, Verve Cards and ewallets (eTranzact, PocketMoney etc.)
 
 * 	__Seamless integration__ into the OpenCart checkout page.
-* 	__Add Naira__ currency symbol. To select it, On OpenCart Admin, click on __International > Localization__ from the left hand menu, then go to  __Configuration__ on the page displayed. From __Default Currency__ select Naira, then click on __Save Changes__ for your changes to be effected.
+* 	__Add Naira__ currency symbol. To select it, On OpenCart Admin, click on __System > Localisation > Currencies__ from the left hand menu.
 
 ---
 
@@ -29,18 +29,16 @@ With Remita OpenCart Payment Plugin, the store admin can easily add all desired 
 
 1. Download the Remita plugin zip file
 
-2. Extract the downloaded file and Copy the extracted folder(remita folder) to modules folder in your OpenCart folder
-3. Login to your OpenCart Admin. Click on "Modules > Modules and Services" from the left hand menu
-4. Click on "Selection" on the  Manage installed modules page, this click takes you to  Module selection Page
-5. On Module selection Page, search "remita" in the search bar and click on Install
-6. A success message is displayed on the right hand corner of your screen, to show your plugin has been installed successfuly.
+2. Extract the downloaded file and Copy the extracted folders(admin and catalog) to "upload folder" in your OpenCart folder
+3. Login to your OpenCart Admin(On your browser). Click on "Extensions > Payments" from the left hand menu
+4. Scroll to "Remita" and click install(the "+" sign changes to "-")
 
 
 
 ### Setup
 
-1. Log into the OpenCart Admin
-2. Click on  *Modules* / *Modules and Services* from the left hand menu
-3. Click on   *Configure* on Remita
-4. Enter the public key and secrete key (these can be found in the Remita Gateway Admin Panel --> https://login.remita.net/remita/registration/signup.spa
-5. Save the settings
+1. Login to your OpenCart Admin(On your browser). Click on "Extensions > Payments" from the left hand menu
+2. Scroll to "Remita" and click Edit(button beside installation button)
+3. Enter the public key and secrete key (these can be found in the Remita Gateway Admin Panel --> https://login.remita.net/remita/registration/signup.spa
+4. Save the settings
+5. A success message is displayed on the screen, to show your plugin has been installed and the setup was successful.
