@@ -3,8 +3,7 @@
  * Plugin Name: Remita OpenCart Payment Gateway
  * Plugin URI:  https://www.remita.net
  * Description: Remita OpenCart Payment gateway allows you to accept payment on your OpenCart store via Visa Cards, Mastercards, Verve Cards, eTranzact, PocketMoni, Paga, Internet Banking, Bank Branch and Remita Account Transfer.
- * Author:      Oshadami Mike
- * Author URI:  http://www.oshadami.com
+ * Author:      SystemSpecs Limited
  * Version:     1.0
  */
 class ControllerPaymentRemita extends Controller {
@@ -34,14 +33,11 @@ class ControllerPaymentRemita extends Controller {
 		$data['text_test'] = $this->language->get('text_test');
 		$data['text_live'] = $this->language->get('text_live');
 		$data['text_edit'] = $this->language->get('text_edit');
-		$data['entry_mercid'] = $this->language->get('entry_mercid');
-		$data['entry_token'] = $this->language->get('entry_token');
-		$data['entry_notification_url'] = $this->language->get('entry_notification_url');
-		$data['entry_servicetypeid'] = $this->language->get('entry_servicetypeid');
-		$data['entry_apikey'] = $this->language->get('entry_apikey');
+		$data['entry_publickey'] = $this->language->get('entry_publickey');
+        $data['entry_token'] = $this->language->get('entry_token');
+		$data['entry_secretkey'] = $this->language->get('entry_secretkey');
 		$data['entry_debug'] = $this->language->get('entry_debug');	
 		$data['entry_test'] = $this->language->get('entry_test');
-		$data['entry_paymentoptions'] = $this->language->get('entry_paymentoptions');
 		$data['entry_pending_status'] = $this->language->get('entry_pending_status');
 		$data['entry_processed_status'] = $this->language->get('entry_processed_status');
 		$data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
@@ -49,40 +45,22 @@ class ControllerPaymentRemita extends Controller {
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
-		$paymentOptions = array(  
-									'REMITA_PAY' => "Remita Account Transfer",  
-									'Interswitch' => "Verve Card",  
-									'UPL' => "Visa",  
-									'MasterCard' => "MasterCard",  
-									'PocketMoni' => "PocketMoni",
-									'BANK_BRANCH' => "Bank Branch",
-									'BANK_INTERNET' => "Internet Banking",
-									'POS' => "POS",
-									'ATM' =>"ATM"
-									 //Add more static Payment option here...  
-								);
-								
-		$data['paymentOptions'] = $paymentOptions; 
+
  		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
 		} else {
 			$data['error_warning'] = '';
 		}
 
- 		if (isset($this->error['remita_mercid'])) {
-			$data['error_mercid'] = $this->error['remita_mercid'];
+ 		if (isset($this->error['remita_publickey'])) {
+			$data['error_publickey'] = $this->error['remita_publickey'];
 		} else {
-			$data['error_mercid'] = '';
+			$data['error_publickey'] = '';
 		}
-		if (isset($this->error['remita_servicetypeid'])) {
-			$data['error_servicetypeid'] = $this->error['remita_servicetypeid'];
+		if (isset($this->error['remita_secretkey'])) {
+			$data['error_secretkey'] = $this->error['remita_secretkey'];
 		} else {
-			$data['error_servicetypeid'] = '';
-		}
-		if (isset($this->error['remita_apikey'])) {
-			$data['error_apikey'] = $this->error['remita_apikey'];
-		} else {
-			$data['error_apikey'] = '';
+			$data['error_secretkey'] = '';
 		}
  		
 		$data['breadcrumbs'] = array();
@@ -91,12 +69,6 @@ class ControllerPaymentRemita extends Controller {
        		'text'      => $this->language->get('text_home'),
 			'href'      => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),      		
       		'separator' => false
-   		);
-
-   		$data['breadcrumbs'][] = array(
-       		'text'      => $this->language->get('text_payment'),
-			'href'      => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'),
-      		'separator' => ' :: '
    		);
 
    		$data['breadcrumbs'][] = array(
@@ -109,21 +81,16 @@ class ControllerPaymentRemita extends Controller {
 
 		$data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
 		
-		if (isset($this->request->post['remita_mercid'])) {
-			$data['remita_mercid'] = $this->request->post['remita_mercid'];
+		if (isset($this->request->post['remita_publickey'])) {
+			$data['remita_publickey'] = $this->request->post['remita_publickey'];
 		} else {
-			$data['remita_mercid'] = $this->config->get('remita_mercid');
+			$data['remita_publickey'] = $this->config->get('remita_publickey');
 		}	
-		if (isset($this->request->post['remita_servicetypeid'])) {
-			$data['remita_servicetypeid'] = $this->request->post['remita_servicetypeid'];
+		if (isset($this->request->post['remita_secretkey'])) {
+			$data['remita_secretkey'] = $this->request->post['remita_secretkey'];
 		} else {
-			$data['remita_servicetypeid'] = $this->config->get('remita_servicetypeid');
-		}	
-		if (isset($this->request->post['remita_apikey'])) {
-			$data['remita_apikey'] = $this->request->post['remita_apikey'];
-		} else {
-			$data['remita_apikey'] = $this->config->get('remita_apikey');
-		}	
+			$data['remita_secretkey'] = $this->config->get('remita_secretkey');
+		}
 		if (isset($this->request->post['remita_mode'])) {
 			$data['remita_mode'] = $this->request->post['remita_mode'];
 		} else {
@@ -135,19 +102,6 @@ class ControllerPaymentRemita extends Controller {
 			$data['remita_token'] = $this->config->get('remita_token');
 		} else {
 			$data['remita_token'] = sha1(uniqid(mt_rand(), 1));
-		}
-		$data['remita_notification_url'] = HTTPS_CATALOG . 'index.php?route=payment/remita/notification&key=' . $data['remita_token'];
-		if (isset($this->request->post['remita_paymentoptions'])) {
-			$prefix = '';
-			$payment_types = $this->request->post['remita_paymentoptions'];
-				foreach ($payment_types as $payment_type)
-				{
-					$paymentList .= $prefix . $payment_type;
-					$prefix = ',';
-				}
-			$data['remita_paymentoptions'] = $paymentList;
-		} else {
-			$data['remita_paymentoptions'] = $this->config->get('remita_paymentoptions');
 		}
 	
 		if (isset($this->request->post['remita_debug'])) {
@@ -204,14 +158,11 @@ class ControllerPaymentRemita extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		if (!$this->request->post['remita_mercid']) {
-			$this->error['remita_mercid'] = $this->language->get('error_mercid');
+		if (!$this->request->post['remita_publickey']) {
+			$this->error['remita_publickey'] = $this->language->get('error_publickey');
 		}
-		if (!$this->request->post['remita_servicetypeid']) {
-			$this->error['remita_servicetypeid'] = $this->language->get('error_servicetypeid');
-		}
-		if (!$this->request->post['remita_apikey']) {
-			$this->error['remita_apikey'] = $this->language->get('error_apikey');
+		if (!$this->request->post['remita_secretkey']) {
+			$this->error['remita_secretkey'] = $this->language->get('error_secretkey');
 		}
 	
 		if (!$this->error) {

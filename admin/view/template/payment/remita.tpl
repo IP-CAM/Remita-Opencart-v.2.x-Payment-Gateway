@@ -26,29 +26,20 @@
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-remita" class="form-horizontal">
           <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-vendor"><?php echo $entry_mercid; ?></label>
+            <label class="col-sm-2 control-label" for="input-vendor"><?php echo $entry_publickey; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="remita_mercid" value="<?php echo $remita_mercid; ?>" placeholder="<?php echo $remita_mercid; ?>" id="input-vendor" class="form-control" />
-              <?php if ($error_mercid) { ?>
-              <div class="text-danger"><?php echo $error_mercid; ?></div>
+              <input type="text" name="remita_publickey" value="<?php echo $remita_publickey; ?>" placeholder="<?php echo $remita_publickey; ?>" id="input-vendor" class="form-control" />
+              <?php if ($error_publickey) { ?>
+              <div class="text-danger"><?php echo $error_publickey; ?></div>
               <?php } ?>
             </div>
           </div>
 		    <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-vendor"><?php echo $entry_servicetypeid; ?></label>
+            <label class="col-sm-2 control-label" for="input-vendor"><?php echo $entry_secretkey; ?></label>
             <div class="col-sm-10">
-              <input type="text" name="remita_servicetypeid" value="<?php echo $remita_servicetypeid; ?>" placeholder="<?php echo $remita_servicetypeid; ?>" id="input-vendor" class="form-control" />
-              <?php if ($error_servicetypeid) { ?>
-              <div class="text-danger"><?php echo $error_servicetypeid; ?></div>
-              <?php } ?>
-            </div>
-          </div>
-		    <div class="form-group required">
-            <label class="col-sm-2 control-label" for="input-vendor"><?php echo $entry_apikey; ?></label>
-            <div class="col-sm-10">
-              <input type="text" name="remita_apikey" value="<?php echo $remita_apikey; ?>" placeholder="<?php echo $remita_apikey; ?>" id="input-vendor" class="form-control" />
-              <?php if ($error_apikey) { ?>
-              <div class="text-danger"><?php echo $error_apikey; ?></div>
+              <input type="text" name="remita_secretkey" value="<?php echo $remita_secretkey; ?>" placeholder="<?php echo $remita_secretkey; ?>" id="input-vendor" class="form-control" />
+              <?php if ($error_secretkey) { ?>
+              <div class="text-danger"><?php echo $error_secretkey; ?></div>
               <?php } ?>
             </div>
           </div>
@@ -57,32 +48,19 @@
             <div class="col-sm-10">
               <select name="remita_mode" id="input-test" class="form-control">
                 <?php if ($remita_mode == 'test') { ?>
-                <option value="test" selected="selected"><?php echo $text_test; ?></option>
+                <option value="0" selected="selected"><?php echo $text_test; ?></option>
                 <?php } else { ?>
-                <option value="test"><?php echo $text_test; ?></option>
+                <option value="0"><?php echo $text_test; ?></option>
                 <?php } ?>
                 <?php if ($remita_mode == 'live') { ?>
-                <option value="live" selected="selected"><?php echo $text_live; ?></option>
+                <option value="1" selected="selected"><?php echo $text_live; ?></option>
                 <?php } else { ?>
-                <option value="live"><?php echo $text_live; ?></option>
+                <option value="1"><?php echo $text_live; ?></option>
                 <?php } ?>
               </select>
             </div>
           </div>
-		      <div class="form-group">
-            <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_paymentoptions; ?></label>
-            <div class="col-sm-10">
-              <select name="remita_paymentoptions[]" id="remita_paymentoptions" multiple class="form-control">
-					<?php 
-					foreach ($paymentOptions as $key=>$value) 
-					{
-					echo "<option value=".$key.">".$value."</option>";
-						
-					} 
-				?>							
-              </select>
-            </div>
-          </div>
+
 		      <div class="form-group">
             <label class="col-sm-2 control-label" for="input-order-status"><?php echo $entry_processed_status; ?></label>
             <div class="col-sm-10">
@@ -132,37 +110,10 @@
               <input type="text" name="remita_sort_order" value="<?php echo $remita_sort_order; ?>" placeholder="<?php echo $remita_sort_order; ?>" id="input-sort-order" class="form-control" />
             </div>
           </div>
-		     <div class="form-group">
-            <label class="col-sm-2 control-label" for="remita-token"><span data-toggle="tooltip" title="Make this long and hard to guess"><?php echo $entry_token; ?></span></label>
-            <div class="col-sm-10">
-              <input type="text" name="remita_token" value="<?php echo $remita_token; ?>" placeholder="<?php echo $entry_token; ?>" id="remita-token" class="form-control" />
-              </div>
-          </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="notification-url"><span data-toggle="tooltip" title="Copy The Notification URL and Paste in your Remita Profile."><?php echo $entry_notification_url; ?></span></label>
-            <div class="col-sm-10">
-              <input type="text" name="notification_url" readonly value="<?php echo $remita_notification_url ?>" placeholder="<?php echo $entry_notification_url; ?>" id="input-cron-job-url" class="form-control" />
-            </div>
-          </div>
         </form>
       </div>
     </div>
   </div>
 
 </div>
-<script type="text/javascript">
-	$(function() {
-	var data = "<?php $remita_paymentoptions; 
-	$prefix = ''; 
-	$paymentmodeList ='';
-	foreach ($remita_paymentoptions as $code=>$name){
-	$paymentmodeList .= $prefix . $name;
-	$prefix = ',';
-	}
-	echo $paymentmodeList;
-	?>";
-	var dataarray = data.split(",");
-	$("#remita_paymentoptions").val(dataarray);
-		});
-</script>
 <?php echo $footer; ?> 

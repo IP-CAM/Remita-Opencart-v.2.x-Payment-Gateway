@@ -17,9 +17,8 @@ $_['text_test']						 = 'Test';
 $_['text_live']						 = 'Live';
 
 // Entry
-$_['entry_mercid']			 		 = 'Merchant ID:';
-$_['entry_servicetypeid']			 = 'Service Type ID:';
-$_['entry_apikey']			 	 	 = 'API Key:';
+$_['entry_publickey']			 	 = 'Public Key';
+$_['entry_secretkey']			     = 'Secret Key';
 $_['entry_debug']					 = 'Debug Mode:<br/><span class="help">Logs additional information to the system log.</span>';
 $_['entry_pending_status']			 = 'Pending Status:';
 $_['entry_processed_status']		 = 'Completed Status:';
@@ -27,13 +26,9 @@ $_['entry_geo_zone']				 = 'Geo Zone:';
 $_['entry_status']					 = 'Status:';
 $_['entry_sort_order']				 = 'Sort Order:';
 $_['entry_test']					 = 'Environment';
-$_['entry_paymentoptions']			 = 'Payment Options';
-$_['entry_notification_url']		 = 'Notification URL';
-$_['entry_token']				 	 = 'Key';
 // Error
 $_['error_permission']				 = 'Warning: You do not have permission to modify Remita Payment Settings!';
-$_['error_mercid']					 = 'Merchant ID required!';
-$_['error_servicetypeid']			 = 'Service Type ID required!';
-$_['error_apikey']					 = 'API Key required!';
+$_['error_publickey']				 = 'Public Key required!';
+$_['error_secretkey']			     = 'Secret Key required!';
 
 ?>
