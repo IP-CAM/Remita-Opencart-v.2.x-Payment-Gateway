@@ -1,4 +1,4 @@
-# Remita Prestashop 2.x Payment Gateway
+# Remita OpenCart 2.x Payment Gateway
 
 ---
 - [Summary](#summary)
