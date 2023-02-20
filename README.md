@@ -9,7 +9,7 @@
 ---
 ### Summary
 
-With Remita OpenCart Payment Plugin, the store admin can easily add all desired payment methods to the OpenCart webshop. Please refer to https://www.remita.net for an overview of all features and services.
+With Remita OpenCart Payment Plugin, the store admin can easily add all desired payment methods to the OpenCart webshop. Please refer to https://www.remita.net for an overview of all features and services and better understanding of our APIs.
 
 ![](payment-image.png) 
 
@@ -46,4 +46,4 @@ With Remita OpenCart Payment Plugin, the store admin can easily add all desired 
 
 ## Community
 
-If you are a developer, please join our Developer Community on [Slack](https://join.slack.com/t/remitadevs/shared_invite/zt-n8virxx2-po~abw6uQRON55AhbKZcAg).
+If you are a developer, please join our Developer/support Community on [Slack](https://join.slack.com/t/remitadevs/shared_invite/zt-n8virxx2-po~abw6uQRON55AhbKZcAg).
